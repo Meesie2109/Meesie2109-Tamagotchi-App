@@ -34,8 +34,19 @@ class ViewController: UIViewController {
         )
         characterView.center = view.center
         
-        //Adds chracterView as subview to the main view
+        //Calls the timerSubView from a viewFile
+        let timerView = TimerView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: 50,
+                height: 50
+            )
+        )
+        
+        //Adds the subviews to the main view
         view.addSubview(characterView)
+        view.addSubview(timerView)
     }
     
     

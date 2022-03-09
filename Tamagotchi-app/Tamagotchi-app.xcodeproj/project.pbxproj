@@ -18,6 +18,7 @@
 		42C4D6A827D8DB530035A6E8 /* Tamagotchi_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C4D6A727D8DB530035A6E8 /* Tamagotchi_appUITestsLaunchTests.swift */; };
 		42C4D6B927D916910035A6E8 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C4D6B827D916910035A6E8 /* CharacterModel.swift */; };
 		42C4D6BC27D91DA20035A6E8 /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C4D6BB27D91DA20035A6E8 /* CharacterView.swift */; };
+		42C4D6BE27D922410035A6E8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C4D6BD27D922410035A6E8 /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		42C4D6A727D8DB530035A6E8 /* Tamagotchi_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		42C4D6B827D916910035A6E8 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
 		42C4D6BB27D91DA20035A6E8 /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
+		42C4D6BD27D922410035A6E8 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				42C4D6BB27D91DA20035A6E8 /* CharacterView.swift */,
+				42C4D6BD27D922410035A6E8 /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42C4D6BE27D922410035A6E8 /* TimerView.swift in Sources */,
 				42C4D68927D8DB4A0035A6E8 /* ViewController.swift in Sources */,
 				42C4D6B927D916910035A6E8 /* CharacterModel.swift in Sources */,
 				42C4D6BC27D91DA20035A6E8 /* CharacterView.swift in Sources */,
