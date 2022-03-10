@@ -23,6 +23,16 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        //Calls the timerSubView from a viewFile
+        let timerView = TimerView(
+            frame: CGRect(
+                x: 20,
+                y: 40,
+                width: 50,
+                height: 50
+            )
+        )
+        
         //Calls the characterSubView from a viewFile
         let characterView = CharacterView(
             frame: CGRect(
@@ -34,23 +44,54 @@ class ViewController: UIViewController {
         )
         characterView.center = view.center
         
+        
         GestureRecognizer(viewInstance: characterView)
         
-        //Calls the timerSubView from a viewFile
-        let timerView = TimerView(
+        //Calls the CircularProgressSubView from a viewFile
+        let circularProgress = CircularProgressView(
             frame: CGRect(
-                x: 0,
-                y: 0,
-                width: 50,
-                height: 50
+                x: 25.0,
+                y: 45.0,
+                width: 40.0,
+                height: 40.0
             )
         )
         
-        countDown()
+        //Colors used for the progressBar
+        circularProgress.trackColor = UIColor(red: 16.0/255.0, green: 52.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+        circularProgress.progressColor = UIColor.green
+        
+        circularProgress.tag = 101
+        self.perform(#selector(animateProgress), with: nil, afterDelay: 2.0)
+        circularProgress.layer.zPosition = 10;
+        
+        //MARK: - Timer / CountDown
+        
+        //Amount of second the timer is gonna count from
+        var timeLeft = 100
+        //Startpoint for the progressbar in the timer
+        var progress = 0.0
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            
+            //Amount withdrawn every second
+            timeLeft -= 1
+            progress += 0.01
+            
+            //Gives the number to the view so it can be added to the label
+            timerView.configure(with: timeLeft)
+            circularProgress.configure(with: progress)
+            
+            //Checks if the timer has 0 seconds left
+            if(timeLeft==0){
+                timeLeft = 100
+                progress = 0
+            }
+        }
         
         //Adds the subviews to the main view
-        view.addSubview(characterView)
-        view.addSubview(timerView)
+        self.view.addSubview(characterView)
+        self.view.addSubview(timerView)
+        self.view.addSubview(circularProgress)
     }
     
     //MARK: - Gesture Recognizer
@@ -62,7 +103,7 @@ class ViewController: UIViewController {
             target: self, action: #selector(gestureFired(_:)))
 
         //Amount of taps required
-        gestureRecognizer.numberOfTapsRequired = 1
+        gestureRecognizer.numberOfTapsRequired = 10
         gestureRecognizer.numberOfTouchesRequired = 1
         
 //        let gestureRecognizer =  UISwipeGestureRecognizer(target: self, action:
@@ -81,22 +122,15 @@ class ViewController: UIViewController {
         }
     }
     
-    //MARK: - Count Down / Timer
-    
-    //A function that counts down and then executes a function
-    func countDown(){
-        var timeLeft = 10
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            print("timer fired!")
-            timeLeft -= 1
-            print(timeLeft)
-                        
-            if(timeLeft==0){
-                timer.invalidate()
-            }
-        }
+    //Function to animate the CircularProgressView/Bar
+    @objc func animateProgress() {
+        let cP = self.view.viewWithTag(101) as! CircularProgressView
+        cP.setProgressWithAnimation(duration: 1.0, value: 0.0)
     }
     
-    
+    //Function to overwrite memory warnings
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }
 
