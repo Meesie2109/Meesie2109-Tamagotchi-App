@@ -15,8 +15,9 @@ import Foundation
 struct Character {
     let name: String
     let gender: String
-    let health: Double
+    var health: Double
     var food: Double
-    let attention: Double
-    let status: String
+    var sleep: Double
+    var attention: Double
+    var status: String
 }

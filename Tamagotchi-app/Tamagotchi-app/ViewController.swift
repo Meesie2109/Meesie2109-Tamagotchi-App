@@ -9,14 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     var timer = Timer()
-    var character = Character.init(name: "", gender: "", health: 100, food: 100, attention: 100, status: "")
+    var character = Character.init(name: "", gender: "", health: 100, food: 100 , sleep: 100, attention: 100, status: "InEgg")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        character.food = 200
-        print(character.food)
     }
     
     //Override function to add new subviews to the main view
@@ -71,7 +68,7 @@ class ViewController: UIViewController {
         var timeLeft = 100
         //Startpoint for the progressbar in the timer
         var progress = 0.0
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
             
             //Amount withdrawn every second
             timeLeft -= 1
@@ -81,10 +78,25 @@ class ViewController: UIViewController {
             timerView.configure(with: timeLeft)
             circularProgress.configure(with: progress)
             
-            //Checks if the timer has 0 seconds left
-            if(timeLeft==0){
-                timeLeft = 100
-                progress = 0
+            if(self.character.status == "InEgg"){
+                if(timeLeft == 0){
+                    print("I am still in the egg")
+                }
+            } else {
+                //Checks if the timer has 0 seconds left
+                if(timeLeft == 0){
+                    timeLeft = 100
+                    progress = 0
+                    self.character.food = self.character.food - 10
+                    if(self.character.food == 0){
+                        if(self.character.health <= 0){
+                            self.character.status = "Deceased"
+                        }
+                        self.character.health = self.character.health - 25
+                    }
+                    self.character.attention = self.character.attention - 15
+                    print(character)
+                }
             }
         }
         
@@ -101,10 +113,17 @@ class ViewController: UIViewController {
         
         let gestureRecognizer = UITapGestureRecognizer(
             target: self, action: #selector(gestureFired(_:)))
-
+        
         //Amount of taps required
         gestureRecognizer.numberOfTapsRequired = 10
         gestureRecognizer.numberOfTouchesRequired = 1
+        
+        let secondGestureRecognizer = UITapGestureRecognizer(
+            target: self, action: #selector(gestureFired(_:)))
+        
+        //Amount of tabs required
+        secondGestureRecognizer.numberOfTapsRequired = 20
+        secondGestureRecognizer.numberOfTouchesRequired = 1
         
 //        let gestureRecognizer =  UISwipeGestureRecognizer(target: self, action:
 //        #selector(gestureFired(_:)))
@@ -113,12 +132,19 @@ class ViewController: UIViewController {
         
         //Adds the GestureRecognizer to the view
         viewInstance.addGestureRecognizer(gestureRecognizer)
+        viewInstance.addGestureRecognizer(secondGestureRecognizer)
         viewInstance.isUserInteractionEnabled = true
     }
     
     @objc private func gestureFired(_ gesture: UITapGestureRecognizer){
         if let firedView = gesture.view {
-            firedView.backgroundColor = .black
+            if(self.character.status == "InEgg"){
+                firedView.backgroundColor = .black
+                self.character.status = "BrokenEgg"
+            } else {
+                firedView.backgroundColor = .yellow
+                self.character.status = "Alive"
+            }
         }
     }
     
