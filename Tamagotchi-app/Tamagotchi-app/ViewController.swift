@@ -81,6 +81,7 @@ class ViewController: UIViewController {
             if(self.character.status == "InEgg"){
                 if(timeLeft == 0){
                     print("I am still in the egg")
+                    timeLeft = 100
                 }
             } else {
                 //Checks if the timer has 0 seconds left
@@ -88,11 +89,12 @@ class ViewController: UIViewController {
                     timeLeft = 100
                     progress = 0
                     self.character.food = self.character.food - 10
-                    if(self.character.food == 0){
+                    if(self.character.food <= 0){
                         if(self.character.health <= 0){
                             self.character.status = "Deceased"
+                        } else {
+                            self.character.health = self.character.health - 25
                         }
-                        self.character.health = self.character.health - 25
                     }
                     self.character.attention = self.character.attention - 15
                     print(character)
