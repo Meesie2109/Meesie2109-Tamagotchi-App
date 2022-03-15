@@ -35,9 +35,12 @@ class TimerView: UIView {
         addSubview(label)
     }
     
+    var xAxis = 0.0
     //Function to set a variable amount for the number in the timer
-    public func configure(with number: Int){
+    public func configure(with number: Int, with x: Double, with y: Double){
         label.text = String(number)
+        label.frame = CGRect(x: x, y: y, width: frame.size.width - 10.0, height: frame.size.height - 10.0)
+
     }
     
     required init?(coder: NSCoder) {
@@ -48,11 +51,13 @@ class TimerView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        label.frame = CGRect(
-            x: 5,
-            y: 5,
-            width: frame.size.width - 10,
-            height: frame.size.height - 10
-        )
+        print(xAxis)
+        
+//        label.frame = CGRect(
+//            x: xAxis,
+//            y: 5.0,
+//            width: frame.size.width - 10.0,
+//            height: frame.size.height - 10.0
+//        )
     }
 }
