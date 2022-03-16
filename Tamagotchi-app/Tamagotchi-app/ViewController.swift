@@ -8,12 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     var timer = Timer()
     var character = Character.init(name: "", gender: "", health: 100, food: 100 , sleep: 100, attention: 100, status: "InEgg")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background")
+        backgroundImage.contentMode = .scaleAspectFill
+        view.insertSubview(backgroundImage, at: 0)
     }
     
     //Override function to add new subviews to the main view
@@ -163,7 +169,7 @@ class ViewController: UIViewController {
         //Calls the timerSubView from a viewFile
         let timerView = TimerView(
             frame: CGRect(
-                x: 20,
+                x: 10,
                 y: 40,
                 width: 50,
                 height: 50
@@ -199,7 +205,7 @@ class ViewController: UIViewController {
         //Calls the timerProgressView from a viewFile
         let timerProgressView = CircularProgressView(
             frame: CGRect(
-                x: 25.0,
+                x: 15.0,
                 y: 45.0,
                 width: 40.0,
                 height: 40.0
@@ -381,7 +387,7 @@ class ViewController: UIViewController {
     func switchProgress(progressView: CircularProgressView, selfCharacter: Int){
         switch selfCharacter{
             case 50...75:
-                progressView.progressColor = UIColor.darkGray
+                progressView.progressColor = UIColor(red: 33.0/255.0, green: 161.0/255.0, blue: 21.0/255.0, alpha: 1.0)
                 break
             case  25...50:
                 progressView.progressColor = UIColor.yellow
