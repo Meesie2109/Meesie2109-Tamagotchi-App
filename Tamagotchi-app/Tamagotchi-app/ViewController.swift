@@ -20,15 +20,61 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        //MARK: - Initialization of the foodTimerView
+        //MARK: - Initialization of the healthTimerView
         
         //Calls the foodTimerView from a viewFile
+        let healthTimerView = TimerView(
+            frame: CGRect(
+                x: 260.0,
+                y: 40.0,
+                width: 50.0,
+                height: 50.0
+            )
+        )
+        healthTimerView.configure(with: 1, with: 5.0, with: 5.0)
+        
+        //MARK: - End of initialization of the healthTimerView
+        
+        
+        
+        //MARK: - Initialization of the foodProgressView
+        
+        //Calls the CircularProgressSubView from a viewFile
+        let healthProgressView = CircularProgressView(
+            frame: CGRect(
+                x: 265.0,
+                y: 45.0,
+                width: 40.0,
+                height: 40.0
+            )
+        )
+        healthProgressView .trackColor =
+            UIColor(
+                red: 16.0/255.0,
+                green: 52.0/255.0,
+                blue: 173.0/255.0,
+                alpha: 1.0
+            )
+        healthProgressView .progressColor = UIColor.green
+        healthProgressView .tag = 101
+        healthProgressView .layer.zPosition = 10;
+        
+        //Calls a methode to animate the progressBar
+        self.perform(#selector(animateProgress), with: nil, afterDelay: 2.0)
+        
+        //MARK: - End of initialization of the foodProgressView
+        
+        
+        
+        //MARK: - Initialization of the foodTimerView
+        
+        //Calls the attentionTimerView from a viewFile
         let foodTimerView = TimerView(
             frame: CGRect(
-                x: 245,
-                y: 40,
-                width: 50,
-                height: 50
+                x: 260.0,
+                y: 150.0,
+                width: 50.0,
+                height: 50.0
             )
         )
         foodTimerView.configure(with: 1, with: 5.0, with: 5.0)
@@ -42,8 +88,8 @@ class ViewController: UIViewController {
         //Calls the CircularProgressSubView from a viewFile
         let foodProgressView = CircularProgressView(
             frame: CGRect(
-                x: 250.0,
-                y: 45.0,
+                x: 265.0,
+                y: 155.0,
                 width: 40.0,
                 height: 40.0
             )
@@ -63,6 +109,52 @@ class ViewController: UIViewController {
         self.perform(#selector(animateProgress), with: nil, afterDelay: 2.0)
         
         //MARK: - End of initialization of the foodProgressView
+        
+        
+        
+        //MARK: - Initialization of the attentionTimerView
+        
+        //Calls the attentionTimerView from a viewFile
+        let attentionTimerView = TimerView(
+            frame: CGRect(
+                x: 260.0,
+                y: 95.0,
+                width: 50.0,
+                height: 50.0
+            )
+        )
+        attentionTimerView.configure(with: 1, with: 5.0, with: 5.0)
+        
+        //MARK: - End of initialization of the attentionTimerView
+        
+        
+        
+        //MARK: - Initialization of the attentionProgressView
+        
+        //Calls the CircularProgressSubView from a viewFile
+        let attentionProgressView = CircularProgressView(
+            frame: CGRect(
+                x: 265.0,
+                y: 100.0,
+                width: 40.0,
+                height: 40.0
+            )
+        )
+        attentionProgressView .trackColor =
+            UIColor(
+                red: 16.0/255.0,
+                green: 52.0/255.0,
+                blue: 173.0/255.0,
+                alpha: 1.0
+            )
+        attentionProgressView .progressColor = UIColor.green
+        attentionProgressView .tag = 101
+        attentionProgressView .layer.zPosition = 10;
+        
+        //Calls a methode to animate the progressBar
+        self.perform(#selector(animateProgress), with: nil, afterDelay: 2.0)
+        
+        //MARK: - End of initialization of the attentionProgressView
         
         
         
@@ -152,9 +244,15 @@ class ViewController: UIViewController {
             //Gives the number to the view so it can be added to the label
             timerView.configure(with: timeLeft, with: 5.0, with: 5.0)
             timerProgressView.configure(with: progress)
+            
+            let healthProgressPercentage = self.character.health / 100
+            healthProgressView.configure(with: healthProgressPercentage)
+            
+            let attentionProgressPercentage = self.character.attention / 100
+            attentionProgressView.configure(with: attentionProgressPercentage)
+            
             let foodProgressPercentage = self.character.food / 100
             foodProgressView.configure(with: foodProgressPercentage)
-            
             
             if(self.character.status == "InEgg"){
                 if(timeLeft == 0){
@@ -175,22 +273,18 @@ class ViewController: UIViewController {
                         self.character.food = self.character.food - 10
                     }
                     
-                    //Swith statment to check how much food is left
-                    switch self.character.food{
-                        case 50...75:
-                            foodProgressView.progressColor = UIColor.darkGray
-                            break
-                        case  25...50:
-                            foodProgressView.progressColor = UIColor.red
-                            break
-                        case 10...25:
-                            foodProgressView.progressColor = UIColor.orange
-                            break
-                        case 0...10:
-                            foodProgressView.progressColor = UIColor.red
-                            break
-                        default:
-                            break
+                    //Check of food is 0 and when it is withdraws health until 0
+                    if(self.character.food <= 0 || self.character.attention <= 0){
+                        if(self.character.health <= 0){
+                            self.character.status = "Deceased"
+                        } else {
+                            if(self.character.food <= 0){
+                                self.character.health = self.character.health - 25
+                            }
+                            if(self.character.attention <= 0){
+                                self.character.attention = self.character.attention - 10
+                            }
+                        }
                     }
                     
                     //Withdrawds attention every time to timer stands on 0
@@ -198,14 +292,14 @@ class ViewController: UIViewController {
                         self.character.attention = self.character.attention - 15
                     }
                     
-                    //Check of food is 0 and when it is withdraws health until 0
-                    if(self.character.food <= 0){
-                        if(self.character.health <= 0){
-                            self.character.status = "Deceased"
-                        } else {
-                            self.character.health = self.character.health - 25
-                        }
-                    }
+                    //calls a switch statment that changed the color of the progressView
+                    switchProgress(progressView: healthProgressView, selfCharacter: Int(self.character.health))
+                    
+                    //calls a switch statment that changed the color of the progressView
+                    switchProgress(progressView: attentionProgressView, selfCharacter: Int(self.character.attention))
+                    
+                    //calls a switch statment that changed the color of the progressView
+                    switchProgress(progressView: foodProgressView, selfCharacter: Int(self.character.food))
                     
                     //Only for development porpuse
                     print(character)
@@ -213,12 +307,18 @@ class ViewController: UIViewController {
             }
         }
         
+        //MARK: - End of Timer / Countdown
+        
         //Adds the subviews to the main view
         self.view.addSubview(characterView)
         self.view.addSubview(timerView)
         self.view.addSubview(timerProgressView)
+        self.view.addSubview(healthTimerView)
+        self.view.addSubview(healthProgressView)
+        self.view.addSubview(attentionTimerView)
+        self.view.addSubview(attentionProgressView)
         self.view.addSubview(foodTimerView)
-        self.view.addSubview(foodProgressView )
+        self.view.addSubview(foodProgressView)
     }
     
     //MARK: - Gesture Recognizer
@@ -251,6 +351,7 @@ class ViewController: UIViewController {
         viewInstance.isUserInteractionEnabled = true
     }
     
+    //gesture recognizer that changes the character status
     @objc private func gestureFired(_ gesture: UITapGestureRecognizer){
         if let firedView = gesture.view {
             if(self.character.status == "InEgg"){
@@ -273,5 +374,29 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    //MARK: - Swicth statment for progressView
+    
+    //Switch statment that changes the color of the progressViews that call it
+    func switchProgress(progressView: CircularProgressView, selfCharacter: Int){
+        switch selfCharacter{
+            case 50...75:
+                progressView.progressColor = UIColor.darkGray
+                break
+            case  25...50:
+                progressView.progressColor = UIColor.yellow
+                break
+            case 10...25:
+                progressView.progressColor = UIColor.orange
+                break
+            case 0...10:
+                progressView.progressColor = UIColor.red
+                break
+            default:
+                break
+        }
+    }
+    
+    //MARK: - End of Swicth statment for progressView
 }
 
