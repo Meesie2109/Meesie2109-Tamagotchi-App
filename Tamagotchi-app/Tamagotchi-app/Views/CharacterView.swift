@@ -9,15 +9,21 @@ import UIKit
 
 class CharacterView: UIView {
 
-    private let label: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
+    private let label: UIImageView = {
+        let label = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        label.image = UIImage(named: "redEgg")
+        label.contentMode = .scaleAspectFill
+
         return label
     }()
     
     override init(frame: CGRect){
         super.init(frame: frame)
-        backgroundColor = .red
+//        backgroundColor = .red
+        
+        let backgroundImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        backgroundImage.image = UIImage(named: "redEgg")
+        backgroundImage.contentMode = .scaleAspectFill
     }
     
     required init?(coder: NSCoder) {
@@ -26,6 +32,10 @@ class CharacterView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        let backgroundImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        backgroundImage.image = UIImage(named: "redEgg")
+        backgroundImage.contentMode = .scaleAspectFill
         
         label.frame = CGRect(
             x: 10,

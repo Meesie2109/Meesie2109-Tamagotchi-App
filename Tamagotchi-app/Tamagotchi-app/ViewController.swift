@@ -6,25 +6,33 @@
 //
 
 import UIKit
+import AVKit
+
+var player: AVPlayer!
+
 
 class ViewController: UIViewController {
     
     var timer = Timer()
     var character = Character.init(name: "", gender: "", health: 100, food: 100 , sleep: 100, attention: 100, status: "InEgg")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "background")
-        backgroundImage.contentMode = .scaleAspectFill
-        view.insertSubview(backgroundImage, at: 0)
     }
     
     //Override function to add new subviews to the main view
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        loadBackground()
         
         //MARK: - Initialization of the healthTimerView
         
@@ -183,15 +191,16 @@ class ViewController: UIViewController {
         //MARK: - Initialization of the characterView
         
         //Calls the characterSubView from a viewFile
-        let characterView = CharacterView(
+        let characterView = UIImageView(
             frame: CGRect(
                 x: 0,
-                y: 0,
-                width: 150,
-                height: 150
+                y: 200,
+                width: 200,
+                height: 200
             )
         )
         characterView.center = view.center
+//        characterView.image = UIImage(named: "redEgg")
         
         //Call to a cesturereconiger to register touches on the object
         GestureRecognizer(viewInstance: characterView)
@@ -229,6 +238,8 @@ class ViewController: UIViewController {
         
         
         
+        
+        
         //MARK: - Timer / CountDown
         
         //Initialization of numbers that are used multiple times in the timer
@@ -240,6 +251,19 @@ class ViewController: UIViewController {
         
         //Startpoint for the progressbar in the timer
         var progress = progressInitialization
+        
+        if(self.character.status == "Alive"){
+
+            
+            self.view.addSubview(timerView)
+            self.view.addSubview(timerProgressView)
+            self.view.addSubview(healthTimerView)
+            self.view.addSubview(healthProgressView)
+            self.view.addSubview(attentionTimerView)
+            self.view.addSubview(attentionProgressView)
+            self.view.addSubview(foodTimerView)
+            self.view.addSubview(foodProgressView)
+        }
         
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
             
@@ -261,11 +285,7 @@ class ViewController: UIViewController {
             foodProgressView.configure(with: foodProgressPercentage)
             
             if(self.character.status == "InEgg"){
-                if(timeLeft == 0){
-                    print("I am still in the egg")
-                    timeLeft = timeInitialization
-                    progress = progressInitialization
-                }
+                
             } else {
                 //Checks if the timer has 0 seconds left
                 if(timeLeft == 0){
@@ -288,7 +308,7 @@ class ViewController: UIViewController {
                                 self.character.health = self.character.health - 25
                             }
                             if(self.character.attention <= 0){
-                                self.character.attention = self.character.attention - 10
+                                self.character.health = self.character.health - 10
                             }
                         }
                     }
@@ -317,14 +337,6 @@ class ViewController: UIViewController {
         
         //Adds the subviews to the main view
         self.view.addSubview(characterView)
-        self.view.addSubview(timerView)
-        self.view.addSubview(timerProgressView)
-        self.view.addSubview(healthTimerView)
-        self.view.addSubview(healthProgressView)
-        self.view.addSubview(attentionTimerView)
-        self.view.addSubview(attentionProgressView)
-        self.view.addSubview(foodTimerView)
-        self.view.addSubview(foodProgressView)
     }
     
     //MARK: - Gesture Recognizer
@@ -361,19 +373,24 @@ class ViewController: UIViewController {
     @objc private func gestureFired(_ gesture: UITapGestureRecognizer){
         if let firedView = gesture.view {
             if(self.character.status == "InEgg"){
-                firedView.backgroundColor = .black
                 self.character.status = "BrokenEgg"
+                print("Broken")
+                viewDidLayoutSubviews()
             } else {
-                firedView.backgroundColor = .yellow
+//                firedView.backgroundColor = .yellow
+                print("Alive")
                 self.character.status = "Alive"
+                viewDidLayoutSubviews()
             }
         }
     }
     
     //Function to animate the CircularProgressView/Bar
     @objc func animateProgress() {
-        let cP = self.view.viewWithTag(101) as! CircularProgressView
-        cP.setProgressWithAnimation(duration: 1.0, value: 0.0)
+        if(self.character.status == "Alive"){
+            let cP = self.view.viewWithTag(101) as! CircularProgressView
+            cP.setProgressWithAnimation(duration: 1.0, value: 0.0)
+        }
     }
     
     //Function to overwrite memory warnings
@@ -400,6 +417,50 @@ class ViewController: UIViewController {
                 break
             default:
                 break
+        }
+    }
+    
+    
+    //Function to load the background of the app
+    func loadBackground() {
+        //Initialization of the BackgroundImage
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background")
+        backgroundImage.contentMode = .scaleAspectFill
+        view.insertSubview(backgroundImage, at: 0)
+        
+        
+        //Initialization of the BackgroundVidoe
+        let player = AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "yellowEggHatching", ofType: "mp4")!))
+        let vidoeLayer = AVPlayerLayer(player: player)
+        vidoeLayer.frame = view.bounds
+        vidoeLayer.videoGravity = .resizeAspectFill
+
+        
+        player.volume = 0
+        player.isMuted = true
+        vidoeLayer.isHidden = true
+        
+        //Sets the name of the vidoePlayer
+        vidoeLayer.name = "vidoeLayer"
+        
+        //Ecexutes when character status is BrokenEgg
+        if(self.character.status == "BrokenEgg"){
+            view.layer.addSublayer(vidoeLayer)
+            vidoeLayer.isHidden = false
+            player.play()
+            
+        }
+        
+        //Ecexutes when character status is Alive
+        if(self.character.status == "Alive"){
+            vidoeLayer.isHidden = true
+            self.view.layer.sublayers?
+                .filter{$0.name == "vidoeLayer"}
+                .forEach { $0.removeFromSuperlayer() }
+            vidoeLayer.isHidden = true
+            
+            view.insertSubview(backgroundImage, at: 0)
         }
     }
     
