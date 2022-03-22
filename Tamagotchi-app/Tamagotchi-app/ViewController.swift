@@ -11,7 +11,7 @@ import AVKit
 var player: AVPlayer!
 
 
-class ViewController: UIViewController {
+class ViewController: helperFunctions {
     
     var timer = Timer()
     var character = Character.init(name: "", gender: "", health: 100, food: 100 , sleep: 100, attention: 100, status: "InEgg")
@@ -19,8 +19,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -191,21 +189,38 @@ class ViewController: UIViewController {
         //MARK: - Initialization of the characterView
         
         //Calls the characterSubView from a viewFile
-        let characterView = UIImageView(
+        let characterView = CharacterView(
             frame: CGRect(
                 x: 0,
-                y: 200,
-                width: 200,
-                height: 200
+                y: 0,
+                width: 400,
+                height: 450
             )
         )
-        characterView.center = view.center
-//        characterView.image = UIImage(named: "redEgg")
+        characterView.configure(statusCharacter: self.character.status)
         
         //Call to a cesturereconiger to register touches on the object
         GestureRecognizer(viewInstance: characterView)
         
         //MARK: - End of initialization of the characterView
+        
+        
+        
+        //MARK: - Initialization of the eggView
+        
+//        let eggView = UIImageView(
+//            frame: CGRect(
+//                x: 0,
+//                y: 0,
+//                width: 100,
+//                height: 130            )
+//        )
+//        eggView.center = view.center
+//        eggView.contentMode = .scaleAspectFill
+//        eggView.tag = 212
+//        eggView.image = UIImage(named: "yellowEgg")
+
+        //MARK: - End of initialization of the eggView
         
         
         
@@ -252,9 +267,16 @@ class ViewController: UIViewController {
         //Startpoint for the progressbar in the timer
         var progress = progressInitialization
         
+//        if(self.character.status == "InEgg"){
+//            self.view.addSubview(characterView())
+//
+//        } else {
+//            if let viewWithTag = self.view.viewWithTag(212){
+//                viewWithTag.removeFromSuperview()
+//            }
+//        }
+        
         if(self.character.status == "Alive"){
-
-            
             self.view.addSubview(timerView)
             self.view.addSubview(timerProgressView)
             self.view.addSubview(healthTimerView)
@@ -265,6 +287,7 @@ class ViewController: UIViewController {
             self.view.addSubview(foodProgressView)
         }
         
+        if(self.character.status == "Alive"){
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
             
             //Amount withdrawn every second
@@ -284,9 +307,7 @@ class ViewController: UIViewController {
             let foodProgressPercentage = self.character.food / 100
             foodProgressView.configure(with: foodProgressPercentage)
             
-            if(self.character.status == "InEgg"){
-                
-            } else {
+            if(self.character.status == "Alive"){
                 //Checks if the timer has 0 seconds left
                 if(timeLeft == 0){
                     
@@ -331,6 +352,7 @@ class ViewController: UIViewController {
                     print(character)
                 }
             }
+        }
         }
         
         //MARK: - End of Timer / Countdown
@@ -399,26 +421,6 @@ class ViewController: UIViewController {
     }
     
     //MARK: - Swicth statment for progressView
-    
-    //Switch statment that changes the color of the progressViews that call it
-    func switchProgress(progressView: CircularProgressView, selfCharacter: Int){
-        switch selfCharacter{
-            case 50...75:
-                progressView.progressColor = UIColor(red: 33.0/255.0, green: 161.0/255.0, blue: 21.0/255.0, alpha: 1.0)
-                break
-            case  25...50:
-                progressView.progressColor = UIColor.yellow
-                break
-            case 10...25:
-                progressView.progressColor = UIColor.orange
-                break
-            case 0...10:
-                progressView.progressColor = UIColor.red
-                break
-            default:
-                break
-        }
-    }
     
     
     //Function to load the background of the app
