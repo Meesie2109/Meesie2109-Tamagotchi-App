@@ -20,4 +20,5 @@ struct Character {
     var sleep: Double
     var attention: Double
     var status: String
+    var bread: Int
 }

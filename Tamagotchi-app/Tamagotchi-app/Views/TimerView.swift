@@ -50,14 +50,5 @@ class TimerView: UIView {
     //Declaration of the space the label takes on the view
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        print(xAxis)
-        
-//        label.frame = CGRect(
-//            x: xAxis,
-//            y: 5.0,
-//            width: frame.size.width - 10.0,
-//            height: frame.size.height - 10.0
-//        )
     }
 }

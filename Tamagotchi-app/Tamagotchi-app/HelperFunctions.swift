@@ -8,30 +8,31 @@
 import Foundation
 import UIKit
 
-class helperFunctions: UIViewController{
+//Class to store all functions that are helping the viewController on one or more aocassions
+class helperFunctions: viewGetter{
     
     
-    //MARK: - SwicthProgress Function
+    //MARK: - GestureRecognizer Amount of Tabs
     
-    //Switch statment that changes the color of the progressViews that call it
-    func switchProgress(progressView: CircularProgressView, selfCharacter: Int){
-        switch selfCharacter{
-            case 50...75:
-                progressView.progressColor = UIColor(red: 33.0/255.0, green: 161.0/255.0, blue: 21.0/255.0, alpha: 1.0)
-                break
-            case  25...50:
-                progressView.progressColor = UIColor.yellow
-                break
-            case 10...25:
-                progressView.progressColor = UIColor.orange
-                break
-            case 0...10:
-                progressView.progressColor = UIColor.red
-                break
-            default:
-                break
-        }
+    func amountOfTabs(object: UITapGestureRecognizer, numberOfTabs: Int){
+        object.numberOfTapsRequired = numberOfTabs
+        object.numberOfTouchesRequired = 1
     }
     
-    //MARK: - End of SwicthProgress Function
+    //MARK: - End of GestureRecognizer Amount of Tabs
+    
+    
+    
+    //MARK: loadBackground
+    
+    func loadBackground() -> UIImageView{
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background")
+        backgroundImage.contentMode = .scaleAspectFill
+        view.insertSubview(backgroundImage, at: 0)
+        
+        return backgroundImage
+    }
+    
+    //MARK: - End of loadBackground
 }
