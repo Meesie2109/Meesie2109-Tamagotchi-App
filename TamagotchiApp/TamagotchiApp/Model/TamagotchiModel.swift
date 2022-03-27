@@ -11,5 +11,7 @@ import UIKit
 
 struct Tamagotchi{
     var collected: [String]
+    var money, xp: Int
 }
+
 

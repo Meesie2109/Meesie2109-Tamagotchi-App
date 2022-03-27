@@ -9,13 +9,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var tamagotchi = Tamagotchi(collected: ["Hello", "World"])
+    private var tamagotchi = tamagotchiData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        print(tamagotchi.collected)
+        
+        //MARK: - Delecrations of SubViews
+        
+        view.addSubview(BackgroundView())
+        
+        
+        UserDefaults.standard.set(100, forKey: "money")
+        print(tamagotchi)
     }
 
 

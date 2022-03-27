@@ -12,12 +12,14 @@
 		4275E0A927F0B70900DF9C78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275E0A827F0B70900DF9C78 /* ViewController.swift */; };
 		4275E0AC27F0B70900DF9C78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4275E0AA27F0B70900DF9C78 /* Main.storyboard */; };
 		4275E0AE27F0B71000DF9C78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4275E0AD27F0B71000DF9C78 /* Assets.xcassets */; };
-		4275E0B127F0B71000DF9C78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4275E0AF27F0B71000DF9C78 /* LaunchScreen.storyboard */; };
 		4275E0BC27F0B71000DF9C78 /* TamagotchiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275E0BB27F0B71000DF9C78 /* TamagotchiAppTests.swift */; };
 		4275E0C627F0B71000DF9C78 /* TamagotchiAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275E0C527F0B71000DF9C78 /* TamagotchiAppUITests.swift */; };
 		4275E0C827F0B71000DF9C78 /* TamagotchiAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275E0C727F0B71000DF9C78 /* TamagotchiAppUITestsLaunchTests.swift */; };
 		4275E0D927F0C08100DF9C78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4275E0D827F0C08100DF9C78 /* LaunchScreen.storyboard */; };
 		4275E0DB27F0C11B00DF9C78 /* TamagotchiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275E0DA27F0C11B00DF9C78 /* TamagotchiModel.swift */; };
+		4275E0DF27F0CA2400DF9C78 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275E0DE27F0CA2400DF9C78 /* CharacterModel.swift */; };
+		4275E0E127F0EF3B00DF9C78 /* TamagotchiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275E0E027F0EF3B00DF9C78 /* TamagotchiData.swift */; };
+		4275E0E427F0F8C700DF9C78 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275E0E327F0F8C700DF9C78 /* BackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +46,6 @@
 		4275E0A827F0B70900DF9C78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4275E0AB27F0B70900DF9C78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4275E0AD27F0B71000DF9C78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4275E0B027F0B71000DF9C78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4275E0B227F0B71000DF9C78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4275E0B727F0B71000DF9C78 /* TamagotchiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TamagotchiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4275E0BB27F0B71000DF9C78 /* TamagotchiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiAppTests.swift; sourceTree = "<group>"; };
@@ -53,6 +54,9 @@
 		4275E0C727F0B71000DF9C78 /* TamagotchiAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4275E0D827F0C08100DF9C78 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4275E0DA27F0C11B00DF9C78 /* TamagotchiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiModel.swift; sourceTree = "<group>"; };
+		4275E0DE27F0CA2400DF9C78 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		4275E0E027F0EF3B00DF9C78 /* TamagotchiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiData.swift; sourceTree = "<group>"; };
+		4275E0E327F0F8C700DF9C78 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +114,6 @@
 				4275E0A827F0B70900DF9C78 /* ViewController.swift */,
 				4275E0AA27F0B70900DF9C78 /* Main.storyboard */,
 				4275E0AD27F0B71000DF9C78 /* Assets.xcassets */,
-				4275E0AF27F0B71000DF9C78 /* LaunchScreen.storyboard */,
 				4275E0B227F0B71000DF9C78 /* Info.plist */,
 			);
 			path = TamagotchiApp;
@@ -137,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				4275E0DA27F0C11B00DF9C78 /* TamagotchiModel.swift */,
+				4275E0DE27F0CA2400DF9C78 /* CharacterModel.swift */,
+				4275E0E027F0EF3B00DF9C78 /* TamagotchiData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -144,9 +149,18 @@
 		4275E0D527F0BF6600DF9C78 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4275E0E227F0F8B300DF9C78 /* BackgroundView */,
 				4275E0D827F0C08100DF9C78 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4275E0E227F0F8B300DF9C78 /* BackgroundView */ = {
+			isa = PBXGroup;
+			children = (
+				4275E0E327F0F8C700DF9C78 /* BackgroundView.swift */,
+			);
+			path = BackgroundView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +267,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4275E0B127F0B71000DF9C78 /* LaunchScreen.storyboard in Resources */,
 				4275E0D927F0C08100DF9C78 /* LaunchScreen.storyboard in Resources */,
 				4275E0AE27F0B71000DF9C78 /* Assets.xcassets in Resources */,
 				4275E0AC27F0B70900DF9C78 /* Main.storyboard in Resources */,
@@ -282,8 +295,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4275E0A927F0B70900DF9C78 /* ViewController.swift in Sources */,
+				4275E0DF27F0CA2400DF9C78 /* CharacterModel.swift in Sources */,
 				4275E0A527F0B70900DF9C78 /* AppDelegate.swift in Sources */,
+				4275E0E427F0F8C700DF9C78 /* BackgroundView.swift in Sources */,
 				4275E0DB27F0C11B00DF9C78 /* TamagotchiModel.swift in Sources */,
+				4275E0E127F0EF3B00DF9C78 /* TamagotchiData.swift in Sources */,
 				4275E0A727F0B70900DF9C78 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,14 +343,6 @@
 				4275E0AB27F0B70900DF9C78 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4275E0AF27F0B71000DF9C78 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4275E0B027F0B71000DF9C78 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
