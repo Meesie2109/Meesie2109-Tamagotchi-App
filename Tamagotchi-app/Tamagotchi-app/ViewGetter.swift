@@ -76,4 +76,18 @@ class viewGetter: UIViewController{
         
         return label
     }
+    
+    func getHealthView() -> TimerView{
+        let healthTimerView = TimerView(
+            frame: CGRect(
+                x: 260.0,
+                y: 40.0,
+                width: 50.0,
+                height: 50.0
+            )
+        )
+        healthTimerView.configure(number: 1, x: 5.0, y: 5.0)
+        
+        return healthTimerView
+    }
 }

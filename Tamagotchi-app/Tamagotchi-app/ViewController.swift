@@ -14,7 +14,7 @@ var player: AVPlayer!
 class ViewController: helperFunctions {
     
     var timer = Timer()
-    var character = Character.init(name: "", gender: "", health: 500, food: 100 , sleep: 100, attention: 100, status: "InEgg", bread: Int.random(in: 0...2))
+    var character = Character.init(name: "", gender: "", health: 100, food: 100 , sleep: 100, attention: 100, status: "InEgg", bread: Int.random(in: 0...2))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +59,7 @@ class ViewController: helperFunctions {
         changeTapText(label: tapText)
         
         var blink = 0
+        var time = 50
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
             
             blink += 1
@@ -69,10 +70,33 @@ class ViewController: helperFunctions {
                 tapText.textColor = .black
             }
             
-            
-            if(self.character.status == "Alive"){
-                self.character.health = self.character.health - 10
-                print(self.character.health)
+            time -= 1
+            if(time == 0){
+                time = 50
+                if(self.character.status == "Alive"){
+                    
+                    if(self.character.food > 0){
+                        self.character.food -= 10
+                    }
+                    if(self.character.attention > 0){
+                        self.character.attention -= 12.5
+                    }
+                    if(self.character.sleep > 0){
+                        self.character.sleep -= 5
+                    }
+                    
+                    if(self.character.food == 0){
+                        self.character.health -= 10
+                    }
+                    if(self.character.attention == 0){
+                        self.character.health -= 7.5
+                    }
+                    if(self.character.sleep == 0){
+                        self.character.health -= 15
+                    }
+                    
+                    print(self.character)
+                }
             }
             
             if(self.character.health == 0){
@@ -169,7 +193,7 @@ class ViewController: helperFunctions {
                 viewWithTag.removeFromSuperview()
             }
         
-            character = Character.init(name: "", gender: "", health: 500, food: 100 , sleep: 100, attention: 100, status: "InEgg", bread: Int.random(in: 0...2))
+            character = Character.init(name: "", gender: "", health: 100, food: 100 , sleep: 100, attention: 100, status: "InEgg", bread: Int.random(in: 0...2))
         
             viewDidLayoutSubviews()
         }
@@ -369,34 +393,6 @@ class ViewController: helperFunctions {
 //
 //
 //
-//        //MARK: - Initialization of the characterView
-//
-//        //Calls the characterSubView from a viewFile
-//        let characterView = CharacterView(
-//            frame: CGRect(
-//                x: 0,
-//                y: 0,
-//                width: 400,
-//                height: 450
-//            )
-//        )
-//        characterView.configure(characterPicture: "yellowEgg")
-//        characterView.tag = 145
-//
-//        //Call to a cesturereconiger to register touches on the object
-//        GestureRecognizer(viewInstance: characterView)
-//
-//        let secondCharacterView = CharacterView(
-//            frame: CGRect(
-//                x: 0,
-//                y: 0,
-//                width: 400,
-//                height: 450
-//            )
-//        )
-//        secondCharacterView.configure(characterPicture: "pichu")
-//
-//        //MARK: - End of initialization of the characterView
 //
 //
 //
@@ -551,10 +547,10 @@ class ViewController: helperFunctions {
 //            cP.setProgressWithAnimation(duration: 1.0, value: 0.0)
 //        }
 //    }
-//
+////
 //    //Function to overwrite memory warnings
 //    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
+////        super.didReceiveMemoryWarning()
 //    }
 //
 //    //MARK: - Swicth statment for progressView
