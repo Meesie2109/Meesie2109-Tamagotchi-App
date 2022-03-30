@@ -26,6 +26,7 @@
 		427675D027F47DD30009CB3A /* TamagotchiVidoe.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 427675CF27F47DD30009CB3A /* TamagotchiVidoe.mp4 */; };
 		427675D327F4AB310009CB3A /* TamagotchiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675D227F4AB310009CB3A /* TamagotchiView.swift */; };
 		427675D527F4AC350009CB3A /* TamagotchiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675D427F4AC350009CB3A /* TamagotchiViewModel.swift */; };
+		427675DB27F4D28E0009CB3A /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675DA27F4D28E0009CB3A /* CollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		427675CF27F47DD30009CB3A /* TamagotchiVidoe.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TamagotchiVidoe.mp4; sourceTree = "<group>"; };
 		427675D227F4AB310009CB3A /* TamagotchiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiView.swift; sourceTree = "<group>"; };
 		427675D427F4AC350009CB3A /* TamagotchiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiViewModel.swift; sourceTree = "<group>"; };
+		427675DA27F4D28E0009CB3A /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		423373CB27F30AD40040B8BA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				427675D927F4D27C0009CB3A /* CollectionView */,
 				427675D127F4AB0A0009CB3A /* TamagotchiView */,
 				427675C927F47CA70009CB3A /* VidoeView */,
 				427675C327F472820009CB3A /* CharacterView */,
@@ -211,6 +214,14 @@
 				427675D427F4AC350009CB3A /* TamagotchiViewModel.swift */,
 			);
 			path = TamagotchiView;
+			sourceTree = "<group>";
+		};
+		427675D927F4D27C0009CB3A /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				427675DA27F4D28E0009CB3A /* CollectionView.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +361,7 @@
 				423373D327F31E120040B8BA /* TamagochiModel.swift in Sources */,
 				427675D327F4AB310009CB3A /* TamagotchiView.swift in Sources */,
 				4233739C27F3097F0040B8BA /* AppDelegate.swift in Sources */,
+				427675DB27F4D28E0009CB3A /* CollectionView.swift in Sources */,
 				427675D527F4AC350009CB3A /* TamagotchiViewModel.swift in Sources */,
 				423373D827F31F150040B8BA /* TapToStartView.swift in Sources */,
 				423373CE27F30AEE0040B8BA /* BackgroundView.swift in Sources */,

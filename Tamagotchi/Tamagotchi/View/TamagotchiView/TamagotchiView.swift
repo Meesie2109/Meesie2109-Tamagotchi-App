@@ -13,8 +13,8 @@ final class TamagotchiView: UIView{
     
     func Character(image: String) -> UIImageView{
         let character = UIImageView()
-        character.frame =  CGRect(x:  0, y: 0, width: 250, height: 250)
-        character.center = CGPoint(x: 160, y: 380)
+        character.frame =  CGRect(x:  0, y: 0, width: 250, height: 350)
+        character.center = CGPoint(x: 160, y: 320)
         character.contentMode = .scaleAspectFill
         character.image = UIImage(named: image)
         
