@@ -1,5 +1,5 @@
 //
-//  CharacterView.swift
+//  TamagotchiView.swift
 //  Tamagotchi
 //
 //  Created by Mees Rootjes on 30/03/2022.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class CharacterView: UIView{
+final class TamagotchiView: UIView{
     
-    let ViewModel = CharacterViewModel()
+    let ViewModel = TamagotchiViewModel()
     
     func Character(image: String) -> UIImageView{
         let character = UIImageView()
@@ -26,12 +26,10 @@ final class CharacterView: UIView{
         RandomNumber = number
     }
     
-    
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let image = ViewModel.getEggViewImage(number: RandomNumber)
+        let image = ViewModel.getTamagotchiViewImage(number: RandomNumber)
         let character = Character(image: image)
         addSubview(character)
     }

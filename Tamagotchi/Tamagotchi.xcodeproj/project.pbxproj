@@ -24,6 +24,8 @@
 		427675C727F474A40009CB3A /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675C627F474A40009CB3A /* CharacterViewModel.swift */; };
 		427675CB27F47CF60009CB3A /* VidoeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675CA27F47CF60009CB3A /* VidoeView.swift */; };
 		427675D027F47DD30009CB3A /* TamagotchiVidoe.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 427675CF27F47DD30009CB3A /* TamagotchiVidoe.mp4 */; };
+		427675D327F4AB310009CB3A /* TamagotchiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675D227F4AB310009CB3A /* TamagotchiView.swift */; };
+		427675D527F4AC350009CB3A /* TamagotchiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675D427F4AC350009CB3A /* TamagotchiViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		427675C627F474A40009CB3A /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		427675CA27F47CF60009CB3A /* VidoeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VidoeView.swift; sourceTree = "<group>"; };
 		427675CF27F47DD30009CB3A /* TamagotchiVidoe.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TamagotchiVidoe.mp4; sourceTree = "<group>"; };
+		427675D227F4AB310009CB3A /* TamagotchiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiView.swift; sourceTree = "<group>"; };
+		427675D427F4AC350009CB3A /* TamagotchiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 		423373CB27F30AD40040B8BA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				427675D127F4AB0A0009CB3A /* TamagotchiView */,
 				427675C927F47CA70009CB3A /* VidoeView */,
 				427675C327F472820009CB3A /* CharacterView */,
 				423373D627F31EFF0040B8BA /* TapToStartView */,
@@ -197,6 +202,15 @@
 				427675CA27F47CF60009CB3A /* VidoeView.swift */,
 			);
 			path = VidoeView;
+			sourceTree = "<group>";
+		};
+		427675D127F4AB0A0009CB3A /* TamagotchiView */ = {
+			isa = PBXGroup;
+			children = (
+				427675D227F4AB310009CB3A /* TamagotchiView.swift */,
+				427675D427F4AC350009CB3A /* TamagotchiViewModel.swift */,
+			);
+			path = TamagotchiView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,7 +348,9 @@
 				423373A027F3097F0040B8BA /* ViewController.swift in Sources */,
 				427675C727F474A40009CB3A /* CharacterViewModel.swift in Sources */,
 				423373D327F31E120040B8BA /* TamagochiModel.swift in Sources */,
+				427675D327F4AB310009CB3A /* TamagotchiView.swift in Sources */,
 				4233739C27F3097F0040B8BA /* AppDelegate.swift in Sources */,
+				427675D527F4AC350009CB3A /* TamagotchiViewModel.swift in Sources */,
 				423373D827F31F150040B8BA /* TapToStartView.swift in Sources */,
 				423373CE27F30AEE0040B8BA /* BackgroundView.swift in Sources */,
 				427675CB27F47CF60009CB3A /* VidoeView.swift in Sources */,

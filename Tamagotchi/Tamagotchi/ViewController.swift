@@ -10,15 +10,11 @@ import AVKit
 
 class ViewController: UIViewController {
     
-    let RandomNumber = Int.random(in: 0...2)
+    var RandomNumber = -99
+    var isTrue = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         
         let tapToStartView = TapToStartView()
         tapToStartView.frame = CGRect(x: 0, y: 70, width: 400, height: 400)
@@ -30,26 +26,6 @@ class ViewController: UIViewController {
             view.addSubview(BackgroundView())
             view.addSubview(tapToStartView)
         }
-        
-        if(Tamagotchi.status == "InEgg"){
-            if let viewWithTag = self.view.viewWithTag(1){
-                viewWithTag.removeFromSuperview()
-            }
-            let character = CharacterView()
-            character.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-            character.tag = 2
-            view.addSubview(character)
-            CharacterGesture(view: character)
-        }
-        
-        let _: AVPlayer!
-        
-        if(Tamagotchi.status == "BrokenEgg"){
-            if let viewWithTag = self.view.viewWithTag(2){
-                viewWithTag.removeFromSuperview()
-            }
-        }
-        
     }
     
     //MARK: - Gesture Recognizer
@@ -68,7 +44,22 @@ class ViewController: UIViewController {
     @objc public func GestureFired(_ gesture: UITapGestureRecognizer){
         Tamagotchi.status = "InEgg"
         print("The egg has landend")
-        viewDidLayoutSubviews()
+        
+        if(Tamagotchi.status == "InEgg"){
+            if(isTrue == 1){
+                RandomNumber = Int.random(in: 0...6)
+                isTrue = 0
+            }
+            if let viewWithTag = self.view.viewWithTag(1){
+                viewWithTag.removeFromSuperview()
+            }
+            let character = CharacterView()
+            character.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+            character.configure(number: RandomNumber)
+            character.tag = 2
+            view.addSubview(character)
+            CharacterGesture(view: character)
+        }
     }
     
     //MARK: - End of the Gesture Recognizer
@@ -87,11 +78,74 @@ class ViewController: UIViewController {
     }
     
     @objc public func CharacterGestureFired(_ gesture: UIGestureRecognizer){
-        Tamagotchi.status = "BrokenEgg"
+        Tamagotchi.status = "Alive"
         print("The egg has broken")
-        viewDidLayoutSubviews()
+        if(Tamagotchi.status == "Alive"){
+            if let viewWithTag = self.view.viewWithTag(2){
+                viewWithTag.removeFromSuperview()
+            }
+                print("I am alive")
+                let tamagotchiView = TamagotchiView()
+                tamagotchiView.tag = 3
+                tamagotchiView.configure(number: RandomNumber)
+                view.addSubview(tamagotchiView)
+                
+                var time = 10
+                
+                var timerTest: Timer? = nil
+                guard timerTest == nil else { return }
+                timerTest = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                    print(time)
+                    time -= 1
+                    if(time == 0){
+                        isTrue = 1
+                        Tamagotchi.status = ""
+                        if let viewWithTag = self.view.viewWithTag(1){
+                            viewWithTag.removeFromSuperview()
+                        }
+                        viewDidLoad()
+                        timerTest?.invalidate()
+                        timerTest = nil
+                    }
+            }
+        }
     }
     
     //MARK: - End of the Character Gesture Recognizer
+    
+    public func setTamagotchi(){
+        if(Tamagotchi.status == "Alive"){
+            if let viewWithTag = self.view.viewWithTag(2){
+                viewWithTag.removeFromSuperview()
+            }
+            if(isTrue == 2){
+                print("I am alive")
+                let tamagotchiView = TamagotchiView()
+                tamagotchiView.tag = 3
+                tamagotchiView.configure(number: RandomNumber)
+                view.addSubview(tamagotchiView)
+                
+                var time = 10
+                
+                var timerTest: Timer? = nil
+                guard timerTest == nil else { return }
+                timerTest = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
+                    print(time)
+                    time -= 1
+                    if(time == 0){
+                        isTrue = 1
+                        Tamagotchi.status = ""
+                        if let viewWithTag = self.view.viewWithTag(1){
+                            viewWithTag.removeFromSuperview()
+                        }
+                        view.subviews.forEach { $0.removeFromSuperview() }
+                        viewDidLayoutSubviews()
+                        timerTest?.invalidate()
+                        timerTest = nil
+                    }
+                }
+            }
+        }
+    }
 }
 
