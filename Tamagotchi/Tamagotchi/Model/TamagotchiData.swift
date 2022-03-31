@@ -7,4 +7,4 @@
 
 import UIKit
 
-var Tamagotchi = TamagotchiModel.init(status: "")
+var Tamagotchi = TamagotchiModel.init(status: "", health: 100, attention: 100)

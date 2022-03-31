@@ -9,6 +9,8 @@ import UIKit
 
 struct TamagotchiModel{
     var status: String
+    var health: Int
+    var attention: Int
 }
 
 

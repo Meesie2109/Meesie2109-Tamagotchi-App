@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         button.setTitle("Missions", for: .normal)
         button.frame = CGRect(x: 165, y: 460, width: 150, height: 100)
         button.backgroundColor = UIColor(red: 230.0/255.0, green: 177.0/255.0, blue: 92.0/255.0, alpha: 1.0)
-        button.tag = 4
+        button.tag = 5
         button.layer.cornerRadius = 15
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21)
         button.layer.borderWidth = 2
@@ -81,6 +81,10 @@ class ViewController: UIViewController {
                 viewWithTag.removeFromSuperview()
             }
             
+            if let viewWithTag = self.view.viewWithTag(5){
+                viewWithTag.removeFromSuperview()
+            }
+            
             //Adds a randum number to define which egg is gonna show up.
             RandomNumber = Int.random(in: 0...6)
             
@@ -126,16 +130,23 @@ class ViewController: UIViewController {
             
             //Adds the TamagotchiView to the ViewStack
             view.addSubview(tamagotchiView)
-                
-            var time = 10
+            
+            let tamagotchiStatsView = TamagotchiStatsView()
+            tamagotchiStatsView.tag = 6
+            
+            //Adds the TamagotchiStatsView to the ViewStack
+            view.addSubview(tamagotchiStatsView)
                 
             var timerTest: Timer? = nil
             guard timerTest == nil else { return }
             timerTest = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
 
-                time -= 1
-                if(time == 0){
+                Tamagotchi.health -= 1
+                print(Tamagotchi.health)
+                if(Tamagotchi.health == 0){
+                    
                     Tamagotchi.status = ""
+                    Tamagotchi.health = 100
                     
                     //Calls the viewDidLoad() to rerun the app again
                     viewDidLoad()
