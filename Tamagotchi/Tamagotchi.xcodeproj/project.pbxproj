@@ -20,6 +20,7 @@
 		423373D327F31E120040B8BA /* TamagochiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423373D227F31E120040B8BA /* TamagochiModel.swift */; };
 		423373D527F31E780040B8BA /* TamagotchiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423373D427F31E780040B8BA /* TamagotchiData.swift */; };
 		423373D827F31F150040B8BA /* TapToStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423373D727F31F150040B8BA /* TapToStartView.swift */; };
+		4266002727F616A20018C018 /* TamagotchiStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4266002627F616A20018C018 /* TamagotchiStatsViewModel.swift */; };
 		427675C527F472950009CB3A /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675C427F472950009CB3A /* CharacterView.swift */; };
 		427675C727F474A40009CB3A /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675C627F474A40009CB3A /* CharacterViewModel.swift */; };
 		427675CB27F47CF60009CB3A /* VidoeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427675CA27F47CF60009CB3A /* VidoeView.swift */; };
@@ -65,6 +66,7 @@
 		423373D227F31E120040B8BA /* TamagochiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagochiModel.swift; sourceTree = "<group>"; };
 		423373D427F31E780040B8BA /* TamagotchiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiData.swift; sourceTree = "<group>"; };
 		423373D727F31F150040B8BA /* TapToStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapToStartView.swift; sourceTree = "<group>"; };
+		4266002627F616A20018C018 /* TamagotchiStatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiStatsViewModel.swift; sourceTree = "<group>"; };
 		427675C427F472950009CB3A /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		427675C627F474A40009CB3A /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		427675CA27F47CF60009CB3A /* VidoeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VidoeView.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				427675DD27F5CCAC0009CB3A /* TamagotchiStatsView.swift */,
+				4266002627F616A20018C018 /* TamagotchiStatsViewModel.swift */,
 			);
 			path = TamagotchiStatsView;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				427675DB27F4D28E0009CB3A /* CollectionView.swift in Sources */,
 				427675D527F4AC350009CB3A /* TamagotchiViewModel.swift in Sources */,
 				423373D827F31F150040B8BA /* TapToStartView.swift in Sources */,
+				4266002727F616A20018C018 /* TamagotchiStatsViewModel.swift in Sources */,
 				423373CE27F30AEE0040B8BA /* BackgroundView.swift in Sources */,
 				427675CB27F47CF60009CB3A /* VidoeView.swift in Sources */,
 				423373D527F31E780040B8BA /* TamagotchiData.swift in Sources */,

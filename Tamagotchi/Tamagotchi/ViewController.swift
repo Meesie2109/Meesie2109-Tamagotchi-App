@@ -145,7 +145,12 @@ class ViewController: UIViewController {
             guard timerTest == nil else { return }
             timerTest = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
 
-                Tamagotchi.health -= 0.1
+                if(Tamagotchi.attention <= 0){
+                    Tamagotchi.health -= 0.1
+                }
+                if(Tamagotchi.food <= 0){
+                    Tamagotchi.health -= 0.1
+                }
                 Tamagotchi.attention -= 0.3
                 Tamagotchi.food -= 0.2
                 
@@ -156,6 +161,7 @@ class ViewController: UIViewController {
                 let health = Tamagotchi.health / 100
                 let attention = Tamagotchi.attention / 100
                 let food = Tamagotchi.food / 100
+                
                 tamagotchiStatsView.configure(Progress: health, attentionProgress: attention, foodProgess: food)
                 view.addSubview(tamagotchiStatsView)
                 

@@ -9,6 +9,8 @@ import UIKit
 
 final class TamagotchiStatsView: UIView{
     
+    let ViewModel = TamagotchiStatsViewModel()
+    
     private func button() -> UIButton{
         
         let button = UIButton()
@@ -35,7 +37,7 @@ final class TamagotchiStatsView: UIView{
     private let progressBar: UIProgressView = {
         let progressBar = UIProgressView()
        
-        progressBar.progressTintColor = .red
+        progressBar.progressTintColor = .green
         progressBar.trackTintColor = .black
         progressBar.progressViewStyle = .default
         progressBar.frame = CGRect(x: 200, y: 50, width: 100, height: 20)
@@ -56,7 +58,7 @@ final class TamagotchiStatsView: UIView{
     private let attentionprogressBar: UIProgressView = {
         let progressBar = UIProgressView()
        
-        progressBar.progressTintColor = .red
+        progressBar.progressTintColor = .green
         progressBar.trackTintColor = .black
         progressBar.progressViewStyle = .default
         progressBar.frame = CGRect(x: 200, y: 70, width: 100, height: 20)
@@ -77,7 +79,7 @@ final class TamagotchiStatsView: UIView{
     private let foodprogressBar: UIProgressView = {
         let progressBar = UIProgressView()
        
-        progressBar.progressTintColor = .red
+        progressBar.progressTintColor = .green
         progressBar.trackTintColor = .black
         progressBar.progressViewStyle = .default
         progressBar.frame = CGRect(x: 200, y: 90, width: 100, height: 20)
@@ -99,6 +101,10 @@ final class TamagotchiStatsView: UIView{
     
     var progress = 0.0
     public func configure(Progress: Double, attentionProgress: Double, foodProgess: Double){
+        ViewModel.getcolor(progressOne: Progress, progressBar: progressBar)
+        ViewModel.getcolor(progressOne: attentionProgress, progressBar: attentionprogressBar)
+        ViewModel.getcolor(progressOne: foodProgess, progressBar: foodprogressBar)
+        
         progressBar.progress = Float(Progress)
         attentionprogressBar.progress = Float(attentionProgress)
         foodprogressBar.progress = Float(foodProgess)
