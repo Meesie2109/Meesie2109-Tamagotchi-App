@@ -133,6 +133,10 @@ class ViewController: UIViewController {
             
             let tamagotchiStatsView = TamagotchiStatsView()
             tamagotchiStatsView.tag = 6
+            let health = Tamagotchi.health / 100
+            let attention = Tamagotchi.attention / 100
+            let food = Tamagotchi.food / 100
+            tamagotchiStatsView.configure(Progress: health, attentionProgress: attention, foodProgess: food)
             
             //Adds the TamagotchiStatsView to the ViewStack
             view.addSubview(tamagotchiStatsView)
@@ -141,8 +145,20 @@ class ViewController: UIViewController {
             guard timerTest == nil else { return }
             timerTest = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] timer in
 
-                Tamagotchi.health -= 1
-                print(Tamagotchi.health)
+                Tamagotchi.health -= 0.1
+                Tamagotchi.attention -= 0.3
+                Tamagotchi.food -= 0.2
+                
+                if let viewWithTag = self.view.viewWithTag(6){
+                    viewWithTag.removeFromSuperview()
+                }
+                
+                let health = Tamagotchi.health / 100
+                let attention = Tamagotchi.attention / 100
+                let food = Tamagotchi.food / 100
+                tamagotchiStatsView.configure(Progress: health, attentionProgress: attention, foodProgess: food)
+                view.addSubview(tamagotchiStatsView)
+                
                 if(Tamagotchi.health == 0){
                     
                     Tamagotchi.status = ""

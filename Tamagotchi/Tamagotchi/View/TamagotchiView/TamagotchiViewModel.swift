@@ -11,7 +11,7 @@ final class TamagotchiViewModel: ObservableObject{
     
     public func getTamagotchiViewImage(number: Int) -> String{
         var tamagotchiImage = "tamagotchi"
-        var randomNumber = Int.random(in: 0...1)
+        let randomNumber = Int.random(in: 0...1)
 
         if(number == 0){
             tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiOne", imageTwo: "tamagotchiTwo")
