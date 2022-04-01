@@ -14,15 +14,15 @@ final class TamagotchiViewModel: ObservableObject{
         let randomNumber = Int.random(in: 0...1)
 
         if(number == 0){
-            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiOne", imageTwo: "tamagotchiTwo")
+            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiOneHappy", imageTwo: "tamagotchiTest")
         } else if(number == 1){
-            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiThree", imageTwo: "tamagotchiFour")
+            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiThree", imageTwo: "tamagotchiTest")
         }
         else if(number == 2){
-            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiFive", imageTwo: "tamagotchiSix")
+            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiFive", imageTwo: "tamagotchiTest")
         }
         else if(number == 3){
-            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiSeven", imageTwo: "tamagotchiEight")
+            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiSeven", imageTwo: "tamagotchiTest")
         }
         else if(number == 4){
             tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiNine", imageTwo: "tamagotchiTen")

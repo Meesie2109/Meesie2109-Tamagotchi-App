@@ -131,6 +131,14 @@ class ViewController: UIViewController {
             //Adds the TamagotchiView to the ViewStack
             view.addSubview(tamagotchiView)
             
+            foodButton.addTarget(self, action: #selector(foodButtonTapped), for: .touchUpInside)
+            foodButton.tag = 7
+            view.addSubview(foodButton)
+            
+            attentionButton.addTarget(self, action: #selector(attentionButtonTapped), for: .touchUpInside)
+            attentionButton.tag = 8
+            view.addSubview(attentionButton)
+            
             let tamagotchiStatsView = TamagotchiStatsView()
             tamagotchiStatsView.tag = 6
             let health = Tamagotchi.health / 100
@@ -165,10 +173,19 @@ class ViewController: UIViewController {
                 tamagotchiStatsView.configure(Progress: health, attentionProgress: attention, foodProgess: food)
                 view.addSubview(tamagotchiStatsView)
                 
-                if(Tamagotchi.health == 0){
+                if(Tamagotchi.health <= 0){
                     
                     Tamagotchi.status = ""
                     Tamagotchi.health = 100
+                    Tamagotchi.attention = 100
+                    Tamagotchi.food = 100
+                    
+                    if let viewWithTag = self.view.viewWithTag(7){
+                        viewWithTag.removeFromSuperview()
+                    }
+                    if let viewWithTag = self.view.viewWithTag(8){
+                        viewWithTag.removeFromSuperview()
+                    }
                     
                     //Calls the viewDidLoad() to rerun the app again
                     viewDidLoad()
@@ -182,5 +199,48 @@ class ViewController: UIViewController {
     }
     
     //MARK: - End of the Character Gesture Recognizer
-}
+    @objc public func foodButtonTapped(){
+        if(Tamagotchi.food < 90){
+            Tamagotchi.food += 10
+        } else {
+            Tamagotchi.food = 100
+        }
+    }
+    
+    @objc public func attentionButtonTapped(){
+        if(Tamagotchi.attention < 90){
+            Tamagotchi.attention += 10
+        } else {
+            Tamagotchi.attention = 100
+        }
+    }
+    
+    let foodButton: UIButton = {
+        
+        let button = UIButton()
+        button.setTitle("Food", for: .normal)
+        button.frame = CGRect(x:175, y: 515, width: 130, height: 80)
+        button.backgroundColor = UIColor(red: 230.0/255.0, green: 177.0/255.0, blue: 92.0/255.0, alpha: 1.0)
+        button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.black.cgColor
+        
+        return button
+    }()
+    
+    let attentionButton: UIButton = {
+        
+        let button = UIButton()
+        button.setTitle("Attention", for: .normal)
+        button.frame = CGRect(x:15, y: 515, width: 130, height: 80)
+        button.backgroundColor = UIColor(red: 230.0/255.0, green: 177.0/255.0, blue: 92.0/255.0, alpha: 1.0)
+        button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.black.cgColor
+        
+        return button
+    }()
 
+}
