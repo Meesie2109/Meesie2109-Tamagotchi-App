@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(Tamagotchi.tamagotchis)
+        
         let CollectionButton = UIButton()
         CollectionButton.setTitle("Collection", for: .normal)
         CollectionButton.frame = CGRect(x: 6, y: 460, width: 150, height: 100)
@@ -27,7 +29,7 @@ class ViewController: UIViewController {
         CollectionButton.addTarget(self, action: #selector(ButtonTapped), for: .touchUpInside)
         
         let button = UIButton()
-        button.setTitle("Missions", for: .normal)
+        button.setTitle("Credits", for: .normal)
         button.frame = CGRect(x: 165, y: 460, width: 150, height: 100)
         button.backgroundColor = UIColor(red: 230.0/255.0, green: 177.0/255.0, blue: 92.0/255.0, alpha: 1.0)
         button.tag = 5
@@ -51,7 +53,21 @@ class ViewController: UIViewController {
     }
     
     @objc func ButtonTapped(){
+        
+        if let viewWithTag = self.view.viewWithTag(1){
+            viewWithTag.removeFromSuperview()
+        }
+        
+        if let viewWithTag = self.view.viewWithTag(4){
+            viewWithTag.removeFromSuperview()
+        }
+        
+        if let viewWithTag = self.view.viewWithTag(5){
+            viewWithTag.removeFromSuperview()
+        }
+        
         view.addSubview(CollectionView())
+        view.addSubview(ClosedButton)
     }
     
     //MARK: - Gesture Recognizer
@@ -242,5 +258,24 @@ class ViewController: UIViewController {
         
         return button
     }()
+    
+    let ClosedButton: UIButton = {
+        
+        let button = UIButton()
+        button.setTitle("X", for: .normal)
+        button.frame = CGRect(x:285, y: 55, width: 30, height: 30)
+        button.backgroundColor = .red
+        button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.black.cgColor
+        button.addTarget(self, action: #selector(CloseButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    @objc func CloseButton(){
+        viewDidLoad()
+    }
 
 }

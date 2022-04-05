@@ -12,6 +12,7 @@ struct TamagotchiModel{
     var health: Double
     var attention: Double
     var food: Double
+    var tamagotchis: [String]
 }
 
 
