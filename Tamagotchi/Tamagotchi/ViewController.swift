@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         
         let CollectionButton = UIButton()
         CollectionButton.setTitle("Collection", for: .normal)
-        CollectionButton.frame = CGRect(x: 6, y: 460, width: 150, height: 100)
+        CollectionButton.frame = CGRect(x: 6, y: 460, width: 308, height: 100)
         CollectionButton.backgroundColor = UIColor(red: 230.0/255.0, green: 177.0/255.0, blue: 92.0/255.0, alpha: 1.0)
         CollectionButton.tag = 4
         CollectionButton.layer.cornerRadius = 15
@@ -28,16 +28,16 @@ class ViewController: UIViewController {
         CollectionButton.layer.borderColor = UIColor.black.cgColor
         CollectionButton.addTarget(self, action: #selector(ButtonTapped), for: .touchUpInside)
         
-        let button = UIButton()
-        button.setTitle("Credits", for: .normal)
-        button.frame = CGRect(x: 165, y: 460, width: 150, height: 100)
-        button.backgroundColor = UIColor(red: 230.0/255.0, green: 177.0/255.0, blue: 92.0/255.0, alpha: 1.0)
-        button.tag = 5
-        button.layer.cornerRadius = 15
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21)
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.black.cgColor
-        button.addTarget(self, action: #selector(ButtonTapped), for: .touchUpInside)
+//        let button = UIButton()
+//        button.setTitle("Credits", for: .normal)
+//        button.frame = CGRect(x: 165, y: 460, width: 150, height: 100)
+//        button.backgroundColor = UIColor(red: 230.0/255.0, green: 177.0/255.0, blue: 92.0/255.0, alpha: 1.0)
+//        button.tag = 5
+//        button.layer.cornerRadius = 15
+//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21)
+//        button.layer.borderWidth = 2
+//        button.layer.borderColor = UIColor.black.cgColor
+//        button.addTarget(self, action: #selector(ButtonTapped), for: .touchUpInside)
         
         let tapToStartView = TapToStartView()
         tapToStartView.frame = CGRect(x: 0, y: 70, width: 400, height: 400)
@@ -47,7 +47,6 @@ class ViewController: UIViewController {
         if(Tamagotchi.status == ""){
             view.addSubview(BackgroundView())
             view.addSubview(CollectionButton)
-            view.addSubview(button)
             view.addSubview(tapToStartView)
         }
     }

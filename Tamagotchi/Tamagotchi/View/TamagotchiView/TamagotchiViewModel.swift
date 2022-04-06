@@ -14,19 +14,19 @@ final class TamagotchiViewModel: ObservableObject{
         let randomNumber = Int.random(in: 0...1)
 
         if(number == 0){
-            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiOneHappy", imageTwo: "tamagotchiTest")
+            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiOneHappy", imageTwo: "tamagotchiTwo")
             Tamagotchi.tamagotchis += ["1"]
 
         } else if(number == 1){
-            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiThree", imageTwo: "tamagotchiTest")
+            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiThree", imageTwo: "tamagotchiFour")
             Tamagotchi.tamagotchis += ["2"]
         }
         else if(number == 2){
-            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiFive", imageTwo: "tamagotchiTest")
+            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiFive", imageTwo: "tamagotchiSix")
             Tamagotchi.tamagotchis += ["3"]
         }
         else if(number == 3){
-            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiSeven", imageTwo: "tamagotchiTest")
+            tamagotchiImage = getImage(randomNumber: randomNumber, imageOne: "tamagotchiSeven", imageTwo: "tamagotchiEight")
             Tamagotchi.tamagotchis += ["4"]
         }
         else if(number == 4){
