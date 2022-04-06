@@ -37,10 +37,9 @@ class TimerView: UIView {
     
     var xAxis = 0.0
     //Function to set a variable amount for the number in the timer
-    public func configure(with number: Int, with x: Double, with y: Double){
+    public func configure(number: Int, x: Double, y: Double){
         label.text = String(number)
         label.frame = CGRect(x: x, y: y, width: frame.size.width - 10.0, height: frame.size.height - 10.0)
-
     }
     
     required init?(coder: NSCoder) {
